@@ -16,8 +16,8 @@ class BonusServiceTest {
 
         assertEquals(expected,actual);
     }
-    @Test
 
+    @Test
     void shouldCalculateRegisteredAndOverLimit() {
         BonusService service = new BonusService();
 
@@ -29,8 +29,8 @@ class BonusServiceTest {
 
         assertEquals(expected,actual);
     }
-    @Test
 
+    @Test
     void shouldCalculateNotRegisteredAndOverLimit() {
         BonusService service = new BonusService();
 
@@ -42,8 +42,8 @@ class BonusServiceTest {
 
         assertEquals(expected,actual);
     }
-    @Test
 
+    @Test
     void shouldCalculateNotRegisteredAndUnderLimit() {
         BonusService service = new BonusService();
 
@@ -55,4 +55,56 @@ class BonusServiceTest {
 
         assertEquals(expected,actual);
     }
+
+    @Test
+    void shouldCalculateRegisteredAndBoundaryLimit() {
+        BonusService service = new BonusService();
+
+        long amount = 1300;
+        boolean registered = true;
+        long expected = 0;
+
+        long actual = service.calculate(amount,registered);
+
+        assertEquals(expected,actual);
+    }
+    @Test
+    void shouldCalculateRegisteredAndAvgLimit() {
+        BonusService service = new BonusService();
+
+        long amount = 1300;
+        boolean registered = true;
+        long expected = 0;
+
+        long actual = service.calculate(amount,registered);
+
+        assertEquals(expected,actual);
+    }
+    @Test
+    void shouldCalculateNotRegisteredAndBoundaryLimit() {
+        BonusService service = new BonusService();
+
+        long amount = 13000000;
+        boolean registered = false;
+        long expected = 500;
+
+        long actual = service.calculate(amount,registered);
+
+        assertEquals(expected,actual);
+    }
+    @Test
+    void shouldCalculateNotRegisteredAndMinBonus() {
+        BonusService service = new BonusService();
+
+        long amount = 13000;
+        boolean registered = false;
+        long expected = 1;
+
+        long actual = service.calculate(amount,registered);
+
+        assertEquals(expected,actual);
+    }
+
+
+
 }
